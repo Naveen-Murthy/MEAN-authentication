@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,10 @@ export class RegisterComponent implements OnInit {
   terms: boolean = false;
   registerSubmitted: boolean = false;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private toast: ToastrService
+    ) {}
 
   ngOnInit(): void {
     this.initializeForm();
@@ -34,6 +38,7 @@ export class RegisterComponent implements OnInit {
     this.registerSubmitted = true;
     if (this.terms && this.registrationForm.valid) {
       this.registerSubmitted = false;
+      this.toast.success("Successful", "Registration")
     }
   }
 }
