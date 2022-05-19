@@ -39,6 +39,16 @@ To add encryption
 While creating user we are using bcryptjs package
 npm i bcryptjs
 
+# Passport jwt
+A Passport strategy for authenticating with a JSON Web Token.
+This module lets you authenticate endpoints using a JSON web token. It is intended to be used to secure RESTful endpoints without sessions.
+npm i passport
+npm i passport-jwt
+
+# Json web token
+JSON Web Token is a proposed Internet standard for creating data with optional signature and/or optional encryption whose payload holds JSON that asserts some number of claims. The tokens are signed either using a private secret or a public/private key.
+npm i jsonwebtoken
+
 # Start server
 
 npm run start

@@ -48,9 +48,19 @@ function getUserByUserName(username, callback) {
     User.findOne(query, callback);
 }
 
+function comparePassword(enteredPassword, hash, callback) {
+    bcryptjs.compare(enteredPassword, hash, (err, isMatch)=>{
+        if(err){
+            throw err;
+        }
+        callback(null, isMatch);
+    })
+}
+
 export {
     User,
     addUser,
     getUserById,
-    getUserByUserName
+    getUserByUserName,
+    comparePassword
 };

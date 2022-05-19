@@ -4,7 +4,9 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import path from "path";
 import users from "./routes/users";
-import Database from "./config/database";
+import passport from 'passport';
+import { config } from "./config/main-config";
+import { applyPassportStrategy } from "./config/passport";
 
 const app = express();
 
@@ -21,18 +23,20 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 // Mondo Db Connection 
-const db = new Database();
-mongoose.connect(db.database);
+mongoose.connect(config.env.mongoDBUri);
 
 // To on db 
 mongoose.connection.on('connected', () => {
-    console.log("Connected to db " + db.database);
+    console.log("Connected to db " + config.env.mongoDBUri);
 })
 
 // To check errors in db connections 
 mongoose.connection.on('error', (err) => {
     console.log("Db error " + err);
 })
+
+// Passport Middleware (For Authtication)
+applyPassportStrategy(passport);
 
 // Accessing users endpoints
 app.use("/users", users);
