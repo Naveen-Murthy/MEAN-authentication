@@ -1,0 +1,73 @@
+<form class="d-flex g-3 flex-column form-row-gap align-items-center" [formGroup]="registrationForm" (submit)="register()">
+  <h2 class="page-header">Register</h2>
+  <div class="col-md-4">
+    <label for="validationServer01" class="form-label">Name</label>
+    <input type="text" class="form-control" [ngClass]="{
+        'is-invalid': fromdetails.name.invalid && (fromdetails.name.dirty || fromdetails.name.touched || registerSubmitted),
+        'is-valid': fromdetails.name.valid
+      }" formControlName="name" required>
+    <div class="valid-feedback" *ngIf="fromdetails.name.valid">
+      Looks good!
+    </div>
+    <div class="invalid-feedback"
+      *ngIf="fromdetails.name.invalid && (fromdetails.name.dirty || fromdetails.name.touched || registerSubmitted)">
+      Please enter a valid name.
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label for="validationServerUsername" class="form-label">Username</label>
+    <div class="input-group has-validation">
+      <span class="input-group-text">@</span>
+      <input type="text" class="form-control" [ngClass]="{
+        'is-invalid': fromdetails.username.invalid && (fromdetails.username.dirty || fromdetails.username.touched || registerSubmitted),
+        'is-valid': fromdetails.username.valid
+      }" formControlName="username" required>
+      <div class="valid-feedback" *ngIf="fromdetails.username.valid">
+        Looks good!
+      </div>
+      <div class="invalid-feedback"
+        *ngIf="fromdetails.username.invalid && (fromdetails.username.dirty || fromdetails.username.touched || registerSubmitted)">
+        Please enter a valid username.
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label for="validationServer03" class="form-label">Email</label>
+    <input type="text" class="form-control" [ngClass]="{
+      'is-invalid': fromdetails.email.invalid && (fromdetails.email.dirty || fromdetails.email.touched || registerSubmitted),
+      'is-valid': fromdetails.email.valid
+    }" formControlName="email" required>
+    <div class="valid-feedback" *ngIf="fromdetails.email.valid">
+      Looks good!
+    </div>
+    <div class="invalid-feedback"
+      *ngIf="fromdetails.email.invalid && (fromdetails.email.dirty || fromdetails.email.touched || registerSubmitted)">
+      Please enter a valid email.
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label for="validationServer03" class="form-label">Password</label>
+    <input type="text" class="form-control" [ngClass]="{
+      'is-invalid': fromdetails.password.invalid && (fromdetails.password.dirty || fromdetails.password.touched || registerSubmitted),
+      'is-valid': fromdetails.password.valid
+    }" formControlName="password" required>
+    <div class="valid-feedback" *ngIf="fromdetails.password.valid">
+      Looks good!
+    </div>
+    <div class="invalid-feedback"
+      *ngIf="fromdetails.password.invalid && (fromdetails.password.dirty || fromdetails.password.touched || registerSubmitted)">
+      Please enter a valid password.
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="terms" [checked]="terms" (change)="terms = !terms">
+      <label class="form-check-label" for="terms">
+         I Agree to terms and conditions
+      </label>
+    </div>
+  </div>
+  <div class="col-md-4 text-center">
+    <button class="btn btn-primary" type="submit">Register</button>
+  </div>
+</form>

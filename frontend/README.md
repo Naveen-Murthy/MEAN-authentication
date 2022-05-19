@@ -17,3 +17,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## We need to generate dister folder after build to be sent to backend project public folder
 To do that we need to update "outputPath": "dist/frontend" to
 "../backend/public"
+
+## To display toasts
+npm install ngx-toastr --save
+npm install @angular/animations --save
