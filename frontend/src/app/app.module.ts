@@ -15,6 +15,7 @@ import { HttpService } from './services/http.service';
 import { AuthenticationService } from './services/authentication.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { JwtModule } from '@auth0/angular-jwt';
   ],
   providers: [
     HttpService,
-    AuthenticationService
+    AuthenticationService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

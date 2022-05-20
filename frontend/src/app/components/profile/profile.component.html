@@ -1,1 +1,8 @@
-<p>profile works!</p>
+<div *ngIf="userDetails">
+  <h2 class="page-header">{{userDetails.username}}</h2>
+  <h4 class="">Name: {{userDetails.name}}</h4>
+  <h4>Email: {{userDetails.email}}</h4>
+</div>
+<div *ngIf="!userDetails">
+  <h2 class="page-header">No details found</h2>
+</div>
