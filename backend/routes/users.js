@@ -2,12 +2,13 @@ import express from "express";
 import {
     User,
     addUser,
-    getUserByUserName,
+    getUserByEmail,
     comparePassword
 } from "../models/user";
 import jwt from 'jsonwebtoken';
 import { config } from "../config/main-config";
 import passport from 'passport';
+import { json } from "express/lib/response";
 
 const users = express.Router();
 
@@ -36,10 +37,10 @@ users.post("/register", (req, res, next) => {
 
 // Authentication Endpoint
 users.post("/authentication", (req, res, next) => {
-    const username=req.body.username;
+    const email=req.body.email;
     const password= req.body.password;
 
-    getUserByUserName(username, (err, user)=>{
+    getUserByEmail(email, (err, user)=>{
         if(err){
             throw err;
         }
@@ -81,7 +82,6 @@ users.post("/authentication", (req, res, next) => {
 
 // Profile Endpoint
 users.get("/profile", passport.authenticate('jwt', { session: false }) , (req, res, next) => {
-    console.log(req)
     res.json({
         user: req.user
     })

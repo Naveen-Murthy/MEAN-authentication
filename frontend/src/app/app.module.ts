@@ -10,6 +10,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpService } from './services/http.service';
+import { AuthenticationService } from './services/authentication.service';
+import { ProfileComponent } from './components/profile/profile.component';
+import { JwtModule } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -17,7 +22,8 @@ import { ToastrModule } from 'ngx-toastr';
     HeaderComponent,
     LoginComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -29,9 +35,13 @@ import { ToastrModule } from 'ngx-toastr';
       timeOut: 3000,
       preventDuplicates: true,
       positionClass: 'toast-position'
-    })
+    }),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    HttpService,
+    AuthenticationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

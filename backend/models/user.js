@@ -41,9 +41,9 @@ function getUserById(id, callback) {
     User.findById(id, callback);
 }
 
-function getUserByUserName(username, callback) {
+function getUserByEmail(email, callback) {
     const query = {
-        username: username,
+        email: email,
     };
     User.findOne(query, callback);
 }
@@ -61,6 +61,6 @@ export {
     User,
     addUser,
     getUserById,
-    getUserByUserName,
+    getUserByEmail,
     comparePassword
 };

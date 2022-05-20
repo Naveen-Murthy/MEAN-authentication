@@ -1,1 +1,34 @@
-<p>login works!</p>
+<form class="d-flex g-3 flex-column form-row-gap align-items-center" [formGroup]="loginForm" (submit)="login()">
+  <h2 class="page-header">Login</h2>
+  <div class="col-md-4">
+    <label for="validationServer03" class="form-label">Email</label>
+    <input type="text" class="form-control" [ngClass]="{
+      'is-invalid': fromdetails.email.invalid && (fromdetails.email.dirty || fromdetails.email.touched || loginSubmitted),
+      'is-valid': fromdetails.email.valid
+    }" formControlName="email" required>
+    <div class="valid-feedback" *ngIf="fromdetails.email.valid">
+      Looks good!
+    </div>
+    <div class="invalid-feedback"
+      *ngIf="fromdetails.email.invalid && (fromdetails.email.dirty || fromdetails.email.touched || loginSubmitted)">
+      Please enter a valid email.
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label for="validationServer03" class="form-label">Password</label>
+    <input type="text" class="form-control" [ngClass]="{
+      'is-invalid': fromdetails.password.invalid && (fromdetails.password.dirty || fromdetails.password.touched || loginSubmitted),
+      'is-valid': fromdetails.password.valid
+    }" formControlName="password" required>
+    <div class="valid-feedback" *ngIf="fromdetails.password.valid">
+      Looks good!
+    </div>
+    <div class="invalid-feedback"
+      *ngIf="fromdetails.password.invalid && (fromdetails.password.dirty || fromdetails.password.touched || loginSubmitted)">
+      Please enter a valid password.
+    </div>
+  </div>
+  <div class="col-md-4 text-center">
+    <button class="btn btn-primary" type="submit">Login</button>
+  </div>
+</form>
