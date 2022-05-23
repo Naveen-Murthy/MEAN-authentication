@@ -4,7 +4,6 @@
   "description": "MEAN stack authentication app backend",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "babel-watch app.js"
   },
   "author": "Murthy Majji",
