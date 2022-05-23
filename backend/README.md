@@ -3,12 +3,25 @@
 First we need to install babel ad dev dependency.
 Babel is a toolchain that is mainly used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript in current and older browsers or environments.
 
-npm i @babel/preset-env babel-cli babel-watch @babel/core --save-dev
+npm i @babel/preset-env @babel/cli babel-watch @babel/core @babel/node --save-dev
 
 After installing dev dependencied we need to create a file ".babelrc"
 We can also create that file using command
 
 touch .babelrc
+
+// "devstart": "babel-watch app.js",
+// "build": "babel app.js -d lib",
+// "start": "node lib/app.js"
+Sample babel
+    "devstart": "babel-node ./build/app.js",
+    "clean": "rm -rf ./build && mkdir build",
+    "build": "npm run clean && npm run babel-build",
+    "start": "npm run build && node ./build/app.js",
+    "babel-build": "babel app.js -d build",
+
+To watch changes we 
+"start": "babel-watch app.js"
 
 # MEAN Packages
 
@@ -52,3 +65,7 @@ npm i jsonwebtoken
 # Start server
 
 npm run start
+
+# Push Changes to Heroku
+After gir commit
+git subtree push --prefix backend heroku master

@@ -4,7 +4,12 @@
   "description": "MEAN stack authentication app backend",
   "main": "app.js",
   "scripts": {
-    "start": "babel-watch app.js"
+    "devstart": "babel-node ./build/app",
+    "clean": "rm -rf ./build && mkdir build",
+    "build": "npm run clean && npm run babel-build",
+    "start": "npm run build && node ./build/app",
+    "babel-build": "babel app.js -d build",
+    "heroku-postbuild": "npm install && npm run build"
   },
   "author": "Murthy Majji",
   "license": "ISC",
@@ -19,9 +24,10 @@
     "path": "^0.12.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.12",
-    "@babel/preset-env": "^7.17.12",
-    "babel-cli": "^6.26.0",
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.18.0",
+    "@babel/node": "^7.17.10",
+    "@babel/preset-env": "^7.18.0",
     "babel-watch": "^7.7.0"
   }
 }
