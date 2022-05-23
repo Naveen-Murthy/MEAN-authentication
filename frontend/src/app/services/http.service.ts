@@ -34,7 +34,8 @@ export class HttpService extends HttpClient{
     super(handler);
   }
 
-  api:string ='http://localhost:4000/users';
+  // api:string ='http://localhost:4000/users';
+  api:string ='users';
 
   /**
    * GET request
