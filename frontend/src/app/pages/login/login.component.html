@@ -16,22 +16,37 @@
   </div>
   <div class="col-md-4">
     <label for="validationServer03" class="form-label">Password</label>
-    <input type="text" class="form-control" [ngClass]="{
-      'is-invalid': fromdetails.password.invalid && (fromdetails.password.dirty || fromdetails.password.touched || loginSubmitted),
-      'is-valid': fromdetails.password.valid
-    }" formControlName="password" required>
-    <div class="valid-feedback" *ngIf="fromdetails.password.valid">
-      Looks good!
+    <div class="input-group has-validation">
+      <input class="form-control" [ngClass]="{
+        'is-invalid': fromdetails.password.invalid && (fromdetails.password.dirty || fromdetails.password.touched || loginSubmitted),
+        'is-valid': fromdetails.password.valid
+      }" [type]="passwordHide ? 'password' : 'text'"
+      formControlName="password" required>
+      <span class="input-group-text password-eye" (click)="tooglePassword()">
+        <i class="bi bi-eye" *ngIf="!passwordHide"></i>
+        <i class="bi bi-eye-slash" *ngIf="passwordHide"></i>
+      </span>
+      <div class="valid-feedback" *ngIf="fromdetails.password.valid">
+        Looks good!
+      </div>
+      <div class="invalid-feedback"
+        *ngIf="fromdetails.password.invalid && (fromdetails.password.dirty || fromdetails.password.touched || loginSubmitted)">
+        Please enter a valid password.
+      </div>
     </div>
-    <div class="invalid-feedback"
-      *ngIf="fromdetails.password.invalid && (fromdetails.password.dirty || fromdetails.password.touched || loginSubmitted)">
-      Please enter a valid password.
+  </div>
+  <div class="col-md-4">
+    <div class="form-check ml-2">
+      <input class="form-check-input" type="checkbox" id="remember" formControlName="rememberme">
+      <label class="form-check-label" for="remember">
+         Remember me
+      </label>
     </div>
   </div>
   <div class="col-md-4 text-center">
     <button class="btn btn-primary" type="submit">Login</button>
   </div>
   <div class="col-md-4 text-center">
-    Don't have an account? <a [routerLink]="['/register']">Signup</a>
+    Don't have an account? <a class="ml-1" [routerLink]="['/register']">Signup</a>
   </div>
 </form>

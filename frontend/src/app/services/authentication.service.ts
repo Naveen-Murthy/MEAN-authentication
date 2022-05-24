@@ -42,9 +42,13 @@ export class AuthenticationService {
     return this.tokenNotExpired();
   }
 
-  logout() {
+  clearData(){
     localStorage.clear();
     sessionStorage.clear();
+  }
+
+  logout() {
+    this.clearData();
     this.toast.success('You logged out successfully.', 'Logout');
     this.router.navigate(['/login']);
   }

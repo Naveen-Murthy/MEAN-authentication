@@ -22,6 +22,14 @@ To do that we need to update "outputPath": "dist/frontend" to
 npm install ngx-toastr --save
 npm install @angular/animations --save
 
+## For Encryption
+For encryption we are using crypto js
+npm install crypto-js
+npm install @types/crypto-js --save-dev
+
+## To remember password
+We need to store in cookies
+npm install ngx-cookie-service --save
 
 ## Checking Authentication to Hide/Show Elements and Handle Routing
 npm install @auth0/angular-jwt --save

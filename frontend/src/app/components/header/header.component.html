@@ -3,8 +3,8 @@
     MEAN
   </a>
   <div class="header-menu">
-    <div class="header-link" *ngIf="!authService.loggedIn()">
-      <a class="nav-link p-0 d-flex" [routerLink]="['/login']" [routerLinkActive]="['login-active']">
+    <div class="header-link" *ngIf="!authService.loggedIn()" [routerLink]="['/login']">
+      <a class="nav-link p-0 d-flex" [routerLink]="['/register']" [routerLinkActive]="['login-active']">
         <i class="bi bi-box-arrow-in-right menu-icon"></i>
         <span class="m-hide ml-1">
           Login/Register

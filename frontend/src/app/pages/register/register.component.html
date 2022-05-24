@@ -60,7 +60,7 @@
     </div>
   </div>
   <div class="col-md-4">
-    <div class="form-check">
+    <div class="form-check ml-2">
       <input class="form-check-input" type="checkbox" id="terms" [checked]="terms" (change)="terms = !terms">
       <label class="form-check-label" for="terms">
          I Agree to terms and conditions
@@ -71,6 +71,6 @@
     <button class="btn btn-primary" type="submit">Register</button>
   </div>
   <div class="col-md-4 text-center">
-    Already have an account? <a [routerLink]="['/login']">Login</a>
+    Already have an account? <a class="ml-1" [routerLink]="['/login']">Login</a>
   </div>
 </form>
