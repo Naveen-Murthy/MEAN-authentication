@@ -8,6 +8,8 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class HeaderComponent implements OnInit {
 
+  menuBlock:boolean=false;
+
   constructor(
     public authService: AuthenticationService
   ) { }
@@ -18,6 +20,16 @@ export class HeaderComponent implements OnInit {
   logout(){
     this.authService.logout();
     return false;
+  }
+
+  menuOpen(){
+    this.menuBlock=!this.menuBlock;
+  }
+
+  clickedOut(event:any){
+    if(event){
+      this.menuBlock =false;
+    }
   }
 
 }

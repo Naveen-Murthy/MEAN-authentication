@@ -14,9 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './services/http.service';
 import { AuthenticationService } from './services/authentication.service';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { JwtModule } from '@auth0/angular-jwt';
 import { AuthGuard } from './guards/auth.guard';
 import { LoaderComponent } from './components/loader/loader.component';
+import { OutsideDirective } from './directives/outside.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,8 @@ import { LoaderComponent } from './components/loader/loader.component';
     RegisterComponent,
     DashboardComponent,
     ProfileComponent,
-    LoaderComponent
+    LoaderComponent,
+    OutsideDirective
   ],
   imports: [
     BrowserModule,

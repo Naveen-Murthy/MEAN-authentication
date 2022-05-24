@@ -1,32 +1,29 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" [routerLink]="['/dashboard']">MEAN</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-md-auto gap-2">
-        <li class="nav-item rounded"
-        *ngIf="!authService.loggedIn()"
-         [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a
-            class="nav-link" [routerLink]="['/login']">Login/Register</a></li>
-        <li class="nav-item dropdown rounded" *ngIf="authService.loggedIn()">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">User</a>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li class="nav-item rounded" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a
-                class="nav-link" [routerLink]="['/dashboard']">Dashboard</a></li>
-            <li>
-            <li class="nav-item rounded" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a
-                class="nav-link" [routerLink]="['/profile']">Profile</a></li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-            <li class="nav-item rounded"><a href="#" class="nav-link" (click)="logout()">Logout</a></li>
-          </ul>
-        </li>
-      </ul>
+<header class="header-wrapper header-styles">
+  <a class="nav-link brand-name" [routerLink]="['/dashboard']">
+    MEAN
+  </a>
+  <div class="header-menu">
+    <div class="header-link" *ngIf="!authService.loggedIn()">
+      <a class="nav-link p-0 d-flex" [routerLink]="['/login']" [routerLinkActive]="['login-active']">
+        <i class="bi bi-box-arrow-in-right menu-icon"></i>
+        <span class="m-hide ml-1">
+          Login/Register
+        </span>
+      </a>
+    </div>
+    <div class="header-link" (click)="menuOpen()" *ngIf="authService.loggedIn()">
+      <i class="bi bi-list menu-icon"></i>
+      <span class="m-hide">Menu</span>
+    </div>
+    <div class="menu-overlay" appOutside (clickOutside)="clickedOut($event)" *ngIf="menuBlock">
+      <div class="menu-items">
+        <div class="menu-item" (click)="menuOpen()"><a class="nav-link" [routerLink]="['/dashboard']"
+            [routerLinkActive]="['active']">Dashboard</a></div>
+        <div class="menu-item" (click)="menuOpen()"><a class="nav-link" [routerLink]="['/profile']"
+            [routerLinkActive]="['active']">Profile</a></div>
+        <hr />
+        <div class="menu-item" (click)="menuOpen()"><a class="nav-link" (click)="logout()">Logout</a></div>
+      </div>
     </div>
   </div>
-</nav>
+</header>
