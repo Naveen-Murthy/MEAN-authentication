@@ -9,6 +9,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { catchError, Observable, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 // Angular CLI configuration thing.
 export interface IRequestOptions {
@@ -25,6 +26,7 @@ export interface IRequestOptions {
   providedIn: 'root',
 })
 export class HttpService extends HttpClient{
+  api:string='';
   constructor(
     handler: HttpHandler,
     private toast: ToastrService,
@@ -32,10 +34,9 @@ export class HttpService extends HttpClient{
     private router: Router
   ) {
     super(handler);
+    this.api=environment.apiKey;
   }
 
-  // api:string ='http://localhost:4000/users';
-  api:string ='users';
 
   /**
    * GET request

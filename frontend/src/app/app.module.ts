@@ -4,18 +4,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './services/http.service';
 import { AuthenticationService } from './services/authentication.service';
-import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthGuard } from './guards/auth.guard';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AuthGuard } from './guards/auth.guard';
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
-    ProfileComponent
+    ProfileComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

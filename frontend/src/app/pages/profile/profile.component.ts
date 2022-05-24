@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { UtilService } from 'src/app/services/util.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,14 +10,17 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 export class ProfileComponent implements OnInit {
   userDetails: Object |any;
 
-  constructor(private authService: AuthenticationService) {}
+  constructor(private authService: AuthenticationService,
+    private utilService: UtilService) {}
 
   ngOnInit(): void {
     this.getProfileDetails();
   }
 
   getProfileDetails() {
+    this.utilService.showLoader();
     this.authService.profile().subscribe((res: any) => {
+      this.utilService.hideLoader();
       if (res.status) {
         this.userDetails = res.user;
       } else{

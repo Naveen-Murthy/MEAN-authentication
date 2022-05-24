@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UtilService {
+  // Loader flag
+  loaderVisibility = new BehaviorSubject(false);
   constructor() {}
 
   /**
@@ -32,7 +35,7 @@ export class UtilService {
    * @param   key
    * @returns any
    */
-   getItemFromSessionStorage(key: string): any {
+  getItemFromSessionStorage(key: string): any {
     try {
       return sessionStorage.getItem(key);
     } catch (Error) {
@@ -46,5 +49,25 @@ export class UtilService {
 
   removeItemFromSessionStorage(key: string) {
     sessionStorage.removeItem(key);
+  }
+
+  /**
+   * @desc To toggle the loader visibility
+   * @param  flag
+   */
+  private toggleLoader(flag: any) {
+    this.loaderVisibility.next(flag);
+  }
+
+  getLoader() {
+    return this.loaderVisibility;
+  }
+
+  showLoader() {
+    this.toggleLoader(true);
+  }
+
+  hideLoader() {
+    this.toggleLoader(false);
   }
 }

@@ -41,7 +41,9 @@ export class LoginComponent implements OnInit {
     this.loginSubmitted = true;
     if (this.loginForm.valid) {
       this.loginSubmitted = false;
+      this.utilService.showLoader();
       this.authService.login(this.loginForm.value).subscribe((res: any) => {
+        this.utilService.hideLoader();
         if (res.status) {
           this.toast.success('Successful', 'Login');
           this.utilService.setItemToSessionStorage('token',res.token);

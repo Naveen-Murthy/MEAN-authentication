@@ -1,0 +1,19 @@
+.spinner-section {
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.spinner-border{
+  width: 64px;
+  height: 64px;
+  border-width: 8px;
+}
