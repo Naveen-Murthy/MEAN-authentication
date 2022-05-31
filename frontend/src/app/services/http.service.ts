@@ -101,6 +101,22 @@ export class HttpService extends HttpClient{
     );
   }
 
+  /**
+   * GET request
+   * @param {string} endPoint it doesn't need / in front of the end point
+   * @param {IRequestOptions} options options of the request like headers, body, etc.
+   * @param {string} api use if there is needed to send request to different back-end than the default one.
+   * @returns {Observable<T>}
+   */
+   public getCall<T>(api:string, endPoint: string, options?: IRequestOptions): Observable<any> {
+    return this.http.get<T>(api + endPoint, options).pipe(
+      catchError((err,caught)=>{
+        let error = this.handleHttpError(err);
+        return error;
+      })
+    );
+  }
+
   handleHttpError(error: HttpErrorResponse): any {
     if (error.status != 200) {
       if (error.status == 401) {

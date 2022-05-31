@@ -1,0 +1,36 @@
+.image-block{
+  flex-grow: 1;
+  position: relative;
+
+  &::after{
+    content: "Loading...";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+  }
+}
+
+.image-data{
+  width: 100%;
+  object-fit: cover;
+  max-height: 300px;
+  vertical-align: bottom;
+  position: relative;
+  z-index: 3;
+}
+
+.images-section{
+  min-height: 100vh;
+}
+
+.credits-logo{
+  display: block;
+  height: 34px;
+}
