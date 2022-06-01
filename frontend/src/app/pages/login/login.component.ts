@@ -113,9 +113,9 @@ export class LoginComponent implements OnInit {
             res.msg + ', redirecting to register page.',
             'Error'
           );
-          // setTimeout(() => {
-          //   this.registerScreen();
-          // }, 3000);
+          setTimeout(() => {
+            this.registerScreen();
+          }, 3000);
         }
       });
     }

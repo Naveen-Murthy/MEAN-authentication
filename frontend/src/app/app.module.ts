@@ -17,6 +17,10 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LoaderComponent } from './components/loader/loader.component';
 import { OutsideDirective } from './directives/outside.directive';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { ImageCropperComponent } from './components/image-cropper/image-cropper.component';
+import { FileDropComponent } from './components/file-drop/file-drop.component';
+import { NgxFileHelpersModule } from 'ngx-file-helpers';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,9 @@ import { OutsideDirective } from './directives/outside.directive';
     DashboardComponent,
     ProfileComponent,
     LoaderComponent,
-    OutsideDirective
+    OutsideDirective,
+    ImageCropperComponent,
+    FileDropComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +46,9 @@ import { OutsideDirective } from './directives/outside.directive';
       preventDuplicates: true,
       positionClass: 'toast-position'
     }),
-    HttpClientModule
+    HttpClientModule,
+    ImageCropperModule,
+    NgxFileHelpersModule
   ],
   providers: [
     HttpService,

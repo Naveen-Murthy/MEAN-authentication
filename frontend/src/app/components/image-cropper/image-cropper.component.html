@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <app-file-drop (drop)="fileChangeEvent($event)" *ngIf="!imageChangedEvent"></app-file-drop>
+      <div *ngIf="imageChangedEvent && !preview">
+        <div class="d-flex flex-column justify-content-center">
+          <h5>Crop Image</h5>
+          <div class="crop-image-block">
+            <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 4"
+            [imageBase64]="imageChangedEvent"
+              [resizeToWidth]="256" format="jpeg" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+              (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()"></image-cropper>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex flex-column justify-content-center" *ngIf="imageChangedEvent && preview">
+        <h5>Preview Image</h5>
+        <div class="preview-image-block">
+          <img [src]=croppedImage alt="profile"/>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="buttons-section mt-3 text-right" *ngIf="imageChangedEvent">
+    <button class="btn btn-primary" (click)="selectAnother()">Select another image</button>
+    <button class="btn btn-primary ml-2" (click)="preview = true" *ngIf="!preview">Preview</button>
+  </div>
+</div>

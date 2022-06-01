@@ -1,0 +1,8 @@
+<section class="pick-image-section d-flex flex-column align-items-center">
+  <button type="button" class="btn btn-primary" #filePicker="ngxFilePicker" ngxFilePicker [readMode]="readMode"
+    [multiple]="false" [filter]="ignoreTooBigFile" accept="image/*" (readStart)="onReadStart($event)"
+    (filePick)="onFilePicked($event)" (readEnd)="onReadEnd($event)">
+    Browse
+  </button>
+  <div class="dropzone mt-3" ngxFileDropzone [readMode]="readMode" (fileDrop)="addFile($event)">Drop an image</div>
+</section>

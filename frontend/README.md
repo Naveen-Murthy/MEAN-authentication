@@ -33,3 +33,7 @@ npm install ngx-cookie-service --save
 
 ## Checking Authentication to Hide/Show Elements and Handle Routing
 npm install @auth0/angular-jwt --save
+
+## To upload and crop image
+npm install ngx-image-cropper --save
+npm install ngx-file-helpers --save

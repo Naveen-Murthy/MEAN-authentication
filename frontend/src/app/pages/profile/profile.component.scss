@@ -1,0 +1,50 @@
+.profile-pictiure-block {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background-color: lightgray;
+  border-radius: 50%;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 226px;
+    height: 226px;
+    border: 3px solid gray;
+    border-radius: 50%;
+    z-index: 1;
+  }
+}
+
+.user-icon {
+  font-size: 94px;
+}
+
+.camera-icon-block {
+  position: absolute;
+  bottom: 0;
+  right: 22px;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: gray;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.camera-icon {
+  font-size: 12px;
+  color: white;
+}
+
+.show{
+  display: block;
+}
+
+.profile-image{
+  overflow: hidden;
+  border-radius: 50%;
+}
