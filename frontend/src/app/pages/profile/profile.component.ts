@@ -13,7 +13,7 @@ export class ProfileComponent implements OnInit {
   userDetails: Object |any;
   profilePic: any = '';
   profilePicModel:boolean = false;
-  profileImage: any = '';
+  profileImage: boolean = false;
 
   constructor(private authService: AuthenticationService,
     private utilService: UtilService,
@@ -29,6 +29,11 @@ export class ProfileComponent implements OnInit {
       this.utilService.hideLoader();
       if (res.status) {
         this.userDetails = res.user;
+        if(res.user.profile_pic){
+          this.profileImage = true;
+        } else {
+          this.profileImage = false;
+        }
       } else{
         this.userDetails = '';
       }
@@ -41,18 +46,32 @@ export class ProfileComponent implements OnInit {
 
   setProfilePic(){
     var imageBlob: Blob = base64ToFile(this.profilePic);
-    var imageName: string = 'naveen';
+    var imageName: string = this.userDetails.name.toLowerCase().toString();
     var imageFile: File = new File([imageBlob], imageName, {
       type: "image/jpeg"
     });
     var blobImage = window.URL.createObjectURL(imageFile);
     // Opens image in new tab
     // window.open(blobImage);
-    this.profilePicModel = !this.profilePicModel;
-    this.profileImage = this.sanatizeUrl(blobImage);
+    var body = {
+      email: this.userDetails.email,
+      profile_pic: blobImage,
+    };
+    this.utilService.showLoader();
+    this.authService.updateProfile(body).subscribe(
+      (res:any)=>{
+        this.utilService.hideLoader();
+        this.profilePicModel = !this.profilePicModel;
+        this.getProfileDetails();
+      }
+    )
   }
 
   sanatizeUrl(generatedImageUrl:any): SafeResourceUrl {
     return this.sanitizer.bypassSecurityTrustResourceUrl(generatedImageUrl);
+  }
+
+  onImgError(){
+    this.profileImage = false;
   }
 }

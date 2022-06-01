@@ -3,7 +3,8 @@ import {
     User,
     addUser,
     getUserByEmail,
-    comparePassword
+    comparePassword,
+    updateDetails
 } from "../models/user";
 import jwt from 'jsonwebtoken';
 import { config } from "../config/main-config";
@@ -87,6 +88,32 @@ users.post("/authentication", (req, res, next) => {
                         msg: "Wrong password."
                     })
                 }
+            })
+        }
+    })
+});
+
+// Update Profile Endpoint
+users.post("/profileupdate", (req, res, next) => {
+    // create a document that sets the plot of the movie
+    const details = {
+      $set: {
+        profile_pic: req.body.profile_pic
+      },
+    };
+    updateDetails(req.body.email, details, (err, user)=>{
+        if(err){
+        throw err;
+        }
+        if(user){
+            return res.json({
+                status:true,
+                msg: "User details updated successfully" 
+            })
+        }else{
+            return res.json({
+                status:false,
+                msg: "User was not registered" 
             })
         }
     })

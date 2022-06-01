@@ -2,7 +2,8 @@
   <div class="profile-pictiure-block mt-1 d-flex align-items-center justify-content-center">
     <i class="bi bi-person user-icon" *ngIf="!profileImage"></i>
     <div class="profile-image" *ngIf="profileImage">
-      <img [src]=profileImage alt="profile image"/>
+      <img [src]=this.sanatizeUrl(userDetails.profile_pic)
+      (error)="onImgError()"/>
     </div>
     <div class="camera-icon-block" (click)="profilePicModel = !profilePicModel">
       <i class="bi bi-camera camera-icon"></i>

@@ -19,6 +19,9 @@ let UserSchema = Schema({
         type: String,
         required: true
     },
+    profile_pic: {
+        type: String
+    }
 });
 
 let User = mongoose.model("User", UserSchema);
@@ -57,10 +60,18 @@ function comparePassword(enteredPassword, hash, callback) {
     })
 }
 
+function updateDetails(email, details, callback) {
+    const query = {
+        email: email,
+    };
+    User.updateOne(query, details, callback);
+}
+
 export {
     User,
     addUser,
     getUserById,
     getUserByEmail,
-    comparePassword
+    comparePassword,
+    updateDetails
 };

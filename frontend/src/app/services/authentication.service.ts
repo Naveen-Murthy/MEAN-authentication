@@ -38,6 +38,16 @@ export class AuthenticationService {
     return this.httpService.Get(url, { headers: headers });
   }
 
+  updateProfile(request: any): Observable<any> {
+    const url = '/profileupdate';
+    const auth_token = this.utilService.getItemFromSessionStorage('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    })
+    return this.httpService.Post(url, request, { headers: headers });
+  }
+
   loggedIn() {
     return this.tokenNotExpired();
   }
