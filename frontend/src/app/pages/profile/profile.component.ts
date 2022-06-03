@@ -44,6 +44,7 @@ export class ProfileComponent implements OnInit {
       },
       (err: any) => {
         console.log(err);
+        this.utilService.hideLoader();
         return false;
       }
     );

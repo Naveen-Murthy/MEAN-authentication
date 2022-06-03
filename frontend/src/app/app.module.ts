@@ -21,6 +21,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { ImageCropperComponent } from './components/image-cropper/image-cropper.component';
 import { FileDropComponent } from './components/file-drop/file-drop.component';
 import { NgxFileHelpersModule } from 'ngx-file-helpers';
+import { DeveloperComponent } from './pages/developer/developer.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { NgxFileHelpersModule } from 'ngx-file-helpers';
     LoaderComponent,
     OutsideDirective,
     ImageCropperComponent,
-    FileDropComponent
+    FileDropComponent,
+    DeveloperComponent
   ],
   imports: [
     BrowserModule,
