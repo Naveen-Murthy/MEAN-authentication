@@ -3,28 +3,48 @@
     Wallpapers
   </a>
   <div class="header-menu">
-    <div class="header-link" *ngIf="!authService.loggedIn()" [routerLink]="['/login']">
-      <a class="nav-link p-0 d-flex" [routerLink]="['/register']" [routerLinkActive]="['login-active']">
-        <i class="bi bi-box-arrow-in-right menu-icon"></i>
-        <span class="m-hide ml-1">
-          Login/Register
-        </span>
-      </a>
-    </div>
-    <div class="header-link" (click)="menuOpen()" *ngIf="authService.loggedIn()">
+    <div class="header-link" (click)="menuOpen()">
       <i class="bi bi-list menu-icon"></i>
       <span class="m-hide">Menu</span>
     </div>
     <div class="menu-overlay" appOutside (clickOutside)="clickedOut($event)" *ngIf="menuBlock">
       <div class="menu-items">
-        <div class="menu-item" (click)="menuOpen()"><a class="nav-link" [routerLink]="['/dashboard']"
-            [routerLinkActive]="['active']">Dashboard</a></div>
-        <div class="menu-item" (click)="menuOpen()"><a class="nav-link" [routerLink]="['/profile']"
-            [routerLinkActive]="['active']">Profile</a></div>
-        <div class="menu-item" (click)="menuOpen()"><a class="nav-link" [routerLink]="['/developer']"
-          [routerLinkActive]="['active']">Developer</a></div>
+        <div class="menu-item" (click)="menuOpen()"><a class="nav-link d-flex pl-0" [routerLink]="['/dashboard']"
+            [routerLinkActive]="['active']">
+            <i class="bi bi-house menu-icon"></i>
+            <span class="ml-2">
+              Dashboard
+            </span></a>
+        </div>
+        <div class="menu-item" (click)="menuOpen()"><a class="nav-link d-flex pl-0" [routerLink]="['/profile']"
+            [routerLinkActive]="['active']">
+            <i class="bi bi-person menu-icon"></i>
+            <span class="ml-2">
+              Profile
+            </span></a>
+        </div>
+        <div class="menu-item" (click)="menuOpen()"><a class="nav-link d-flex pl-0" [routerLink]="['/developer']"
+            [routerLinkActive]="['active']">
+            <i class="bi bi-file-earmark-code menu-icon"></i>
+            <span class="ml-2">
+              Developer
+            </span></a>
+        </div>
         <hr />
-        <div class="menu-item" (click)="menuOpen()"><a class="nav-link" (click)="logout()">Logout</a></div>
+        <div class="menu-item" (click)="menuOpen()" *ngIf="!authService.loggedIn()"><a class="nav-link d-flex pl-0"
+            [routerLink]="['/login']" [routerLinkActive]="['active']">
+            <i class="bi bi-box-arrow-in-right menu-icon"></i>
+            <span class="ml-2">
+              Login/Register
+            </span></a>
+        </div>
+        <div class="menu-item" (click)="menuOpen()" *ngIf="authService.loggedIn()"><a class="nav-link d-flex pl-0"
+            (click)="logout()">
+            <i class="bi bi-box-arrow-in-left menu-icon"></i>
+            <span class="ml-2">
+              Logout
+            </span></a>
+        </div>
       </div>
     </div>
   </div>
