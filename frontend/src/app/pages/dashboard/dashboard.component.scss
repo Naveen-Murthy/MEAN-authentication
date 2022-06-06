@@ -20,6 +20,7 @@
 .image-data{
   width: 100%;
   object-fit: cover;
+  object-position: bottom;
   max-height: 300px;
   vertical-align: bottom;
   position: relative;
@@ -33,4 +34,24 @@
 .credits-logo{
   display: block;
   height: 34px;
+}
+
+.download-img-block{
+  max-width: 100%;
+  max-height: 348px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-form{
+  max-width: 400px;
+}
+
+@import "../.././../assets/scss/main.scss";
+
+.image-block{
+  @include layout(425) {
+    margin-left: 0px !important;
+  }
 }

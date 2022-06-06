@@ -16,8 +16,8 @@
               Dashboard
             </span></a>
         </div>
-        <div class="menu-item" (click)="menuOpen()"><a class="nav-link d-flex pl-0" [routerLink]="['/profile']"
-            [routerLinkActive]="['active']">
+        <div class="menu-item" (click)="menuOpen()" *ngIf="authService.loggedIn()"><a class="nav-link d-flex pl-0"
+            [routerLink]="['/profile']" [routerLinkActive]="['active']">
             <i class="bi bi-person menu-icon"></i>
             <span class="ml-2">
               Profile

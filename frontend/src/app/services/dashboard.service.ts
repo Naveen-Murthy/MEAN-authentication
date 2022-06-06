@@ -38,4 +38,18 @@ export class DashboardService {
       params: queryParams,
     });
   }
+
+  searchImages(queryParam:string,page:number = 1, per_page:number = 80): Observable<any> {
+    const headers = new HttpHeaders({
+      Authorization: this.pexelsApiKey,
+    });
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append('query', queryParam);
+    queryParams = queryParams.append('page', page);
+    queryParams = queryParams.append('per_page', per_page);
+    return this.httpService.getCall(this.apiUrl, 'search/', {
+      headers: headers,
+      params: queryParams,
+    });
+  }
 }

@@ -1,6 +1,18 @@
-<section class="images-section d-flex gap-2 flex-wrap">
-  <div class="image-block ml-2 mb-2" *ngFor="let imageData of imagesData">
-    <img class="image-data" src="{{imageData.src.medium}}" alt="image" />
+<section class="search-form m-auto w-100">
+  <form [formGroup]="searchForm" (submit)="searchData()">
+    <div class="input-group search-form-field">
+      <input class="form-control" type="text" placeholder="Search images..."
+      formControlName="search" required>
+      <span class="input-group-text" (click)="searchData()">
+        <i class="bi bi-search"></i>
+      </span>
+    </div>
+  </form>
+</section>
+
+<section class="images-section d-flex gap-2 flex-wrap mt-4" loading="lazy">
+  <div class="image-block ml-2 mb-2" *ngFor="let imageData of imagesData" (click)="downloadModalData(imageData)" loading="lazy">
+    <img class="image-data" src="{{imageData.src.medium}}" alt="{{imageData.alt}}" />
   </div>
 </section>
 
@@ -9,4 +21,31 @@
   <a class="credits-logo mt-2" href="https://www.pexels.com">
     <img src="https://images.pexels.com/lib/api/pexels-white.png" />
   </a>
+</div>
+
+<div class="modal fade show" *ngIf="downloadModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel">Upload Profile Picture</h5>
+        <button type="button" class="btn-close" (click)="downloadModal = !downloadModal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="download-img-block">
+          <img class="shadow rounded" [src]="imgData.src.medium" alt="{{imgData.alt}}" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" type="button" (click)="downloadImg('original')">
+          <i class="bi bi-images"></i>
+          Original</button>
+        <button class="btn btn-primary" type="button" (click)="downloadImg('portrait')">
+          <i class="bi bi-file-image"></i>
+          Portrait</button>
+        <button class="btn btn-primary" type="button" (click)="downloadImg('landscape')">
+          <i class="bi bi-image"></i>
+          Landscape</button>
+      </div>
+    </div>
+  </div>
 </div>
